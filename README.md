@@ -31,4 +31,7 @@ El reporte estará en `cypress/reports/final/mochawesome.html`
 - `package.json`: dependencias
 - `cypress.config.js`: configuración de Cypress + Mochawesome
 - `README.md`: instrucciones completas# cypress_embarque_completo_reportes
+<<<<<<< HEAD
 # Cambios nuevos
+=======
+>>>>>>> c0b1147 (first commit)
