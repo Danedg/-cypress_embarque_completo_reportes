@@ -16,7 +16,7 @@ npm install
 npx cypress run --spec "cypress/e2e/embarque.cy.js"
 ```
 
-> Se guardará un video de la ejecución en `cypress/videos/`.
+Se guardará un video de la ejecución en `cypress/videos/`.
 
 ## 📊 Generar reporte visual con Mochawesome
 ```bash
