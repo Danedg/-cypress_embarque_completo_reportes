@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-25T03:29:12.394Z",
+    "end": "2025-06-25T03:30:12.782Z",
+    "duration": 60388,
+    "testsRegistered": 3,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "6dca9de9-c0ae-41f4-9813-a0820fc75d9f",
+      "title": "",
+      "fullFile": "cypress/e2e/embarque.cy.js",
+      "file": "cypress/e2e/embarque.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "06a02335-3e4c-408e-b73d-2153f6ad9b91",
+          "title": "Flujo de autenticación y filtrado de embarques",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Autenticación con PIN válido y búsqueda exitosa",
+              "fullTitle": "Flujo de autenticación y filtrado de embarques Autenticación con PIN válido y búsqueda exitosa",
+              "timedOut": null,
+              "duration": 60283,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[type=\"password\"]').type(this.datos.pin);\ncy.contains('Aceptar').click();\ncy.contains('Embarques').should('be.visible');\ncy.contains('Filtros').click();\ncy.get('.buscador-maestro').click();\ncy.contains('Embarque').click();\ncy.get('input[placeholder=\"Buscar\"]').type(this.datos.embarque);\ncy.contains('Buscar').click();\ncy.get('.tabla-embarques').should('contain', this.datos.embarque);",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Flujo de autenticación y fi...`",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Flujo de autenticación y fi...`\n    at timedOutWaitingForPageLoad (https://www.selaski.com/__cypress/runner/cypress_runner.js:130639:64)\n    at <unknown> (https://www.selaski.com/__cypress/runner/cypress_runner.js:131624:16)\n    at tryCatcher (https://www.selaski.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://www.selaski.com/__cypress/runner/cypress_runner.js:4209:41)\n    at tryCatcher (https://www.selaski.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://www.selaski.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://www.selaski.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://www.selaski.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://www.selaski.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://www.selaski.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://www.selaski.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://www.selaski.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://www.selaski.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress-embarque-test/./cypress/e2e/embarque.cy.js:4:7)",
+                "diff": null
+              },
+              "uuid": "929d0ff4-ed8a-49e2-b952-78d03e3d3ce0",
+              "parentUUID": "06a02335-3e4c-408e-b73d-2153f6ad9b91",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Error con PIN incorrecto",
+              "fullTitle": "Flujo de autenticación y filtrado de embarques Error con PIN incorrecto",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[type=\"password\"]').type('1234');\ncy.contains('Aceptar').click();\ncy.contains('PIN incorrecto').should('be.visible');",
+              "err": {},
+              "uuid": "1d251dae-280f-4bf8-90c1-6939d36112fe",
+              "parentUUID": "06a02335-3e4c-408e-b73d-2153f6ad9b91",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Error con embarque no encontrado",
+              "fullTitle": "Flujo de autenticación y filtrado de embarques Error con embarque no encontrado",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[type=\"password\"]').type(this.datos.pin);\ncy.contains('Aceptar').click();\ncy.contains('Filtros').click();\ncy.get('.buscador-maestro').click();\ncy.contains('Embarque').click();\ncy.get('input[placeholder=\"Buscar\"]').type('NoExiste123');\ncy.contains('Buscar').click();\ncy.contains('Sin resultados').should('be.visible');",
+              "err": {},
+              "uuid": "b3f8002c-94fe-417a-b681-0d71c38644d6",
+              "parentUUID": "06a02335-3e4c-408e-b73d-2153f6ad9b91",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "929d0ff4-ed8a-49e2-b952-78d03e3d3ce0"
+          ],
+          "pending": [],
+          "skipped": [
+            "1d251dae-280f-4bf8-90c1-6939d36112fe",
+            "b3f8002c-94fe-417a-b681-0d71c38644d6"
+          ],
+          "duration": 60283,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

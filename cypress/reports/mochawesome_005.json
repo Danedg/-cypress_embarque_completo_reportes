@@ -1,0 +1,155 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 0,
+    "pending": 0,
+    "failures": 3,
+    "start": "2025-06-26T22:21:48.354Z",
+    "end": "2025-06-26T22:22:11.399Z",
+    "duration": 23045,
+    "testsRegistered": 3,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "98f44a22-fe01-4771-9ef0-e55a519d7dcc",
+      "title": "",
+      "fullFile": "cypress/e2e/embarque.cy.js",
+      "file": "cypress/e2e/embarque.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "51ae2ea0-d6b8-44e0-8304-0d6edf32efbd",
+          "title": "Flujo de autenticación y filtrado de embarques",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Autenticación con PIN válido y búsqueda exitosa",
+              "fullTitle": "Flujo de autenticación y filtrado de embarques Autenticación con PIN válido y búsqueda exitosa",
+              "timedOut": null,
+              "duration": 8560,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[type=\"password\"]').type(this.datos.pin);\ncy.contains('Aceptar').click();\ncy.contains('Embarques').should('be.visible');\ncy.contains('Filtros').click();\ncy.get('.buscador-maestro').click();\ncy.contains('Embarque').click();\ncy.get('input[placeholder=\"Buscar\"]').type(this.datos.embarque);\ncy.contains('Buscar').click();\ncy.get('.tabla-embarques').should('contain', this.datos.embarque);",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[type=\"password\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[type=\"password\"]`, but never found it.\n    at Context.eval (webpack://cypress-embarque-test/./cypress/e2e/embarque.cy.js:8:7)",
+                "diff": null
+              },
+              "uuid": "8ab7982d-0aee-4422-a52b-4b9878200efa",
+              "parentUUID": "51ae2ea0-d6b8-44e0-8304-0d6edf32efbd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Error con PIN incorrecto",
+              "fullTitle": "Flujo de autenticación y filtrado de embarques Error con PIN incorrecto",
+              "timedOut": null,
+              "duration": 7797,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[type=\"password\"]').type('1234');\ncy.contains('Aceptar').click();\ncy.contains('PIN incorrecto').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[type=\"password\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[type=\"password\"]`, but never found it.\n    at Context.eval (webpack://cypress-embarque-test/./cypress/e2e/embarque.cy.js:22:7)",
+                "diff": null
+              },
+              "uuid": "b487283d-fab7-47ca-b655-fbafe6d9f901",
+              "parentUUID": "51ae2ea0-d6b8-44e0-8304-0d6edf32efbd",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Error con embarque no encontrado",
+              "fullTitle": "Flujo de autenticación y filtrado de embarques Error con embarque no encontrado",
+              "timedOut": null,
+              "duration": 6600,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('input[type=\"password\"]').type(this.datos.pin);\ncy.contains('Aceptar').click();\ncy.contains('Filtros').click();\ncy.get('.buscador-maestro').click();\ncy.contains('Embarque').click();\ncy.get('input[placeholder=\"Buscar\"]').type('NoExiste123');\ncy.contains('Buscar').click();\ncy.contains('Sin resultados').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[type=\"password\"]`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `input[type=\"password\"]`, but never found it.\n    at Context.eval (webpack://cypress-embarque-test/./cypress/e2e/embarque.cy.js:28:7)",
+                "diff": null
+              },
+              "uuid": "0119cabf-9420-47fb-9ca7-2b7f12b63240",
+              "parentUUID": "51ae2ea0-d6b8-44e0-8304-0d6edf32efbd",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8ab7982d-0aee-4422-a52b-4b9878200efa",
+            "b487283d-fab7-47ca-b655-fbafe6d9f901",
+            "0119cabf-9420-47fb-9ca7-2b7f12b63240"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 22957,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

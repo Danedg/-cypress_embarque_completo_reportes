@@ -1,0 +1,148 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-06-27T03:03:33.095Z",
+    "end": "2025-06-27T03:04:33.495Z",
+    "duration": 60400,
+    "testsRegistered": 3,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 2,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "ecd0fd7a-b5e7-47ef-876d-8bd6e4fce79b",
+      "title": "",
+      "fullFile": "cypress/e2e/embarque.cy.js",
+      "file": "cypress/e2e/embarque.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3cc22e3c-e49c-4761-ad00-158a238276c7",
+          "title": "Flujo de autenticación y filtrado de embarque",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Debe autenticarse con PIN válido y filtrar un embarque existente correctamente",
+              "fullTitle": "Flujo de autenticación y filtrado de embarque Debe autenticarse con PIN válido y filtrar un embarque existente correctamente",
+              "timedOut": null,
+              "duration": 60262,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('Paso 1: Acceder a la URL (gestionado por beforeEach)');\ncy.log(`Paso 2: Ingresar PIN válido: ${testData.pin}`);\n// *** CORRECCIÓN CLAVE para las 4 cajas de PIN ***\n// Inspecciona el HTML y reemplaza 'input.pin-digit-input' por el selector real\n// que apunte a TODAS las cajas de PIN. Podría ser una clase, o un tipo de input único.\nconst pinDigits = testData.pin.split(''); // Divide el PIN en dígitos individuales\ncy.get('input[formcontrolname^=\"digit\"]') // Selector actualizado para inputs de PIN\n.should('have.length', 4) // Asegúrate de que encontramos 4 campos\n.each(($el, index) => {\n  cy.wrap($el).type(pinDigits[index]); // Escribe cada dígito en su campo\n});\ncy.contains('Ingresar').click(); // Vi en el video que el botón es 'Ingresar', no 'Aceptar'\ncy.wait(2000);\ncy.screenshot('despues-de-login');\n// Asegúrate de que 'Embarques' sea visible después del login\ncy.contains('Embarques').should('be.visible', {\n  timeout: 10000\n});\ncy.log('Autenticación exitosa.');\n// 3. Filtrado de Embarque\ncy.log('Paso 3: Iniciar proceso de filtrado de embarque');\n// Asegúrate que el botón de filtros tenga este texto o un selector real.\ncy.contains('Filtros').click();\ncy.wait(2000);\ncy.screenshot('despues-de-filtros');\n// Asegúrate que el buscador maestro tenga este texto o un selector real.\ncy.contains('Buscador-maestro', {\n  timeout: 10000\n}).click();\ncy.wait(2000);\ncy.screenshot('despues-de-buscador-maestro');\n// Asegúrate que la opción \"Embarque\" tenga este texto o un selector real.\ncy.contains('Embarque').click();\ncy.log(`Ingresar número de embarque: ${testData.embarque}`);\n// Asegúrate que el campo de búsqueda de embarque tenga este placeholder o selector real.\ncy.get('input[placeholder=\"Buscar\"]').type(testData.embarque);\n// Asegúrate que el botón de buscar tenga este texto o un selector real.\ncy.contains('Buscar').click();\n// Esperar a que los resultados se carguen y sean visibles\n// Reemplaza '.Tabla-embarques' con el selector real de la tabla o contenedor de resultados.\ncy.get('.Tabla-embarques', {\n  timeout: 10000\n}).should('be.visible');\n// 4. Validación de Datos\ncy.log('Paso 4: Validar que los detalles del embarque coincidan');\ncy.get('.Tabla-embarques').should('contain', testData.embarque);",
+              "err": {
+                "message": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Flujo de autenticación y fi...`",
+                "estack": "CypressError: Timed out after waiting `60000ms` for your remote page to load.\n\nYour page did not fire its `load` event within `60000ms`.\n\nYou can try increasing the `pageLoadTimeout` value in `cypress.config.js` to wait longer.\n\nBrowsers will not fire the `load` event until all stylesheets and scripts are done downloading.\n\nWhen this `load` event occurs, Cypress will continue running commands.\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Flujo de autenticación y fi...`\n    at timedOutWaitingForPageLoad (https://www.selaski.com/__cypress/runner/cypress_runner.js:130639:64)\n    at <unknown> (https://www.selaski.com/__cypress/runner/cypress_runner.js:131624:16)\n    at tryCatcher (https://www.selaski.com/__cypress/runner/cypress_runner.js:1830:23)\n    at <unknown> (https://www.selaski.com/__cypress/runner/cypress_runner.js:4209:41)\n    at tryCatcher (https://www.selaski.com/__cypress/runner/cypress_runner.js:1830:23)\n    at Promise._settlePromiseFromHandler (https://www.selaski.com/__cypress/runner/cypress_runner.js:1542:31)\n    at Promise._settlePromise (https://www.selaski.com/__cypress/runner/cypress_runner.js:1599:18)\n    at Promise._settlePromise0 (https://www.selaski.com/__cypress/runner/cypress_runner.js:1644:10)\n    at Promise._settlePromises (https://www.selaski.com/__cypress/runner/cypress_runner.js:1720:18)\n    at _drainQueueStep (https://www.selaski.com/__cypress/runner/cypress_runner.js:2430:12)\n    at _drainQueue (https://www.selaski.com/__cypress/runner/cypress_runner.js:2423:9)\n    at Async._drainQueues (https://www.selaski.com/__cypress/runner/cypress_runner.js:2439:5)\n    at Async.drainQueues (https://www.selaski.com/__cypress/runner/cypress_runner.js:2309:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://cypress-embarque-test/./cypress/e2e/embarque.cy.js:13:7)",
+                "diff": null
+              },
+              "uuid": "0cdef79a-62e7-4fee-837b-68f0003d8549",
+              "parentUUID": "3cc22e3c-e49c-4761-ad00-158a238276c7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Debe mostrar un mensaje de error al ingresar un PIN incorrecto",
+              "fullTitle": "Flujo de autenticación y filtrado de embarque Debe mostrar un mensaje de error al ingresar un PIN incorrecto",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log(`Intentando autenticación con PIN incorrecto: '1234'`);\n// *** CORRECCIÓN CLAVE para las 4 cajas de PIN ***\nconst invalidPinDigits = '1234'.split('');\ncy.get('input[formcontrolname^=\"digit\"]') // Selector actualizado para inputs de PIN\n.should('have.length', 4).each(($el, index) => {\n  cy.wrap($el).type(invalidPinDigits[index]);\n});\ncy.contains('Ingresar').click(); // Botón 'Ingresar'\ncy.wait(2000);\ncy.screenshot('despues-de-login-pin-incorrecto');\n// Aserción de error: verificar que el mensaje de error es visible y contiene el texto esperado\ncy.contains('pin incorrecto', {\n  matchCase: false,\n  timeout: 15000\n}).should('be.visible');\ncy.log('Mensaje de error para PIN incorrecto visible.');",
+              "err": {},
+              "uuid": "a641f5cc-f0f1-49bc-9f4c-9b617c433c49",
+              "parentUUID": "3cc22e3c-e49c-4761-ad00-158a238276c7",
+              "isHook": false,
+              "skipped": true
+            },
+            {
+              "title": "Debe mostrar un mensaje de \"no resultados\" al buscar un embarque inexistente",
+              "fullTitle": "Flujo de autenticación y filtrado de embarque Debe mostrar un mensaje de \"no resultados\" al buscar un embarque inexistente",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.log('Paso 1: Autenticarse para buscar embarque inexistente');\n// *** CORRECCIÓN CLAVE para las 4 cajas de PIN ***\nconst pinDigits = testData.pin.split('');\ncy.get('input[formcontrolname^=\"digit\"]') // Selector actualizado para inputs de PIN\n.should('have.length', 4).each(($el, index) => {\n  cy.wrap($el).type(pinDigits[index]);\n});\ncy.contains('Ingresar').click(); // Botón 'Ingresar'\ncy.wait(2000);\ncy.screenshot('despues-de-login-busqueda-inexistente');\ncy.contains('Embarques').should('be.visible');\ncy.log('Paso 2: Iniciar proceso de filtrado con embarque inexistente');\ncy.contains('Filtros').click();\ncy.wait(2000);\ncy.screenshot('despues-de-filtros-busqueda-inexistente');\ncy.contains('Buscador-maestro', {\n  timeout: 10000\n}).click();\ncy.wait(2000);\ncy.screenshot('despues-de-buscador-maestro-busqueda-inexistente');\ncy.contains('Embarque').click();\ncy.log(`Ingresar número de embarque inexistente: 'NoExiste123'`);\ncy.get('input[placeholder=\"Buscar\"]').type('NoExiste123');\ncy.contains('Buscar').click();\n// Asegúrate que el mensaje de \"no resultados\" tenga este texto o un selector real.\ncy.contains('Sin resultados').should('be.visible');\ncy.log('Mensaje de \"no resultados\" para embarque inexistente visible.');",
+              "err": {},
+              "uuid": "8b707f94-d62d-47eb-99c6-083a6f49e9e1",
+              "parentUUID": "3cc22e3c-e49c-4761-ad00-158a238276c7",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "0cdef79a-62e7-4fee-837b-68f0003d8549"
+          ],
+          "pending": [],
+          "skipped": [
+            "a641f5cc-f0f1-49bc-9f4c-9b617c433c49",
+            "8b707f94-d62d-47eb-99c6-083a6f49e9e1"
+          ],
+          "duration": 60262,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
